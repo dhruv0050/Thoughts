@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/styles/style_p.css">
+</head>
+
+<body>
+    <div class="inputs">
+        <div class="main">
+            <img class="profile-image" src="/images/Untitled design.png" alt="Profile Image">
+            <h1>Thoughts</h1>
+            <div class="access">
+                <a class="a_bt" href="/logout">Logout</a>
+            </div>
+        </div>
+        <div class="profile-header">
+            <img class="profile-image" src="<%= user.image %>" alt="Profile Image">
+            <h2>@<%= user.username %>
+            </h2>
+        </div>
+        <form action="/post" method="post">
+            <textarea class="txt" placeholder="What's on your mind" name="content"></textarea>
+            <input class="i_bt" type="submit" value="Create post">
+        </form>
+        <div class="posts">
+            <!-- <h3>Your Posts</h3> -->
+            <div class="postcontainer">
+                <% user.posts.reverse().forEach(function(post){ %>
+                    <div class="post">
+                        <h4>@<%= user.username %>
+                        </h4>
+                        <p class="content">
+                            <%= post.content %>
+                        </p>
+                        <div class="access">
+                            <a class="d_bt" href="/like/<%= post._id %>">
+                                <%= post.likes.indexOf(user._id)===-1 ? "Like" : "Unlike" %>
+                            </a>
+                        </div>
+                    </div>
+                    <% }) %>
+            </div>
+        </div>
+
+</body>
+
+</html>

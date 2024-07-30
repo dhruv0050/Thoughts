@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <div>
+        <form action="/create" method="post">   
+            <input class="input" type="text" name="Title" placeholder="Enter Title">
+            <input class="input x" type="text" name="Task" placeholder="Write Task Details">
+            <div class="bt"><button class="btsub">Create Task</button></div>
+        </form>
+    </div>
+    <div class="tasks">
+        <% if(files.length>0) { %>
+            <% files.forEach(function(val){%>
+                <div class="card">
+                    <h1> <%= val %></h1>
+                    <a class="tag" href="/files/<%= val %>">Elaborate</a>
+                </div>
+            <% })%>
+        <% }else{ %>
+            <h3 class="head">NO TASKS YET</h3>
+        <% }%>
+
+    </div>
+</body>
+
+</html>
